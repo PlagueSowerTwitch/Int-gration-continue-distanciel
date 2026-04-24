@@ -50,12 +50,11 @@ export default function Landing() {
       {/* Features */}
       <section className="features">
         {[
-          { icon: '🔐', title: 'Authentification sécurisée', desc: 'JWT, bcrypt, routes protégées' },
           { title: 'Authentification sécurisée', desc: 'JWT, bcrypt, routes protégées' },
           { title: 'Gestion de tâches', desc: 'Créer, modifier, supprimer vos todos' },
-          {
+          { title: 'Cloud-native', desc: 'Docker, Kubernetes, Azure VM' },
+        ].map((f) => (
           <div key={f.title} className="feature-card card">
-
             <h3>{f.title}</h3>
             <p>{f.desc}</p>
           </div>

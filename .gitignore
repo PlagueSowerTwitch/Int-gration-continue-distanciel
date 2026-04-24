@@ -2,6 +2,7 @@
 .env
 .env.local
 .env.*.local
+vm-todoapp_key.pem
 
 # Node
 node_modules/

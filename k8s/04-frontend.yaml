@@ -25,7 +25,7 @@ spec:
       containers:
         - name: frontend
           # IMAGE remplacée par le pipeline CI/CD
-          image: DOCKER_USERNAME/todoapp-frontend:latest
+          image: plaguesowertwitch/todoapp-frontend:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80

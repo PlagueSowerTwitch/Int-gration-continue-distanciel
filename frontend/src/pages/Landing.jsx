@@ -11,7 +11,7 @@ export default function Landing() {
     <div className="landing">
       {/* Navbar */}
       <nav className="landing-nav">
-        <span className="logo">✅ TodoApp</span>
+        <span className="logo">TodoApp</span>
         <div className="nav-actions">
           {user ? (
             <>
@@ -32,7 +32,6 @@ export default function Landing() {
 
       {/* Hero */}
       <section className="hero">
-        <div className="hero-badge">🚀 Déployé avec Docker + Kubernetes</div>
         <h1 className="hero-title">
           Organisez votre vie,<br />
           <span className="gradient-text">une tâche à la fois</span>
@@ -52,11 +51,11 @@ export default function Landing() {
       <section className="features">
         {[
           { icon: '🔐', title: 'Authentification sécurisée', desc: 'JWT, bcrypt, routes protégées' },
-          { icon: '📋', title: 'Gestion de tâches', desc: 'Créer, modifier, supprimer vos todos' },
-          { icon: '☁️', title: 'Cloud-native', desc: 'Docker, Kubernetes, Azure VM' },
-        ].map((f) => (
+          { title: 'Authentification sécurisée', desc: 'JWT, bcrypt, routes protégées' },
+          { title: 'Gestion de tâches', desc: 'Créer, modifier, supprimer vos todos' },
+          {
           <div key={f.title} className="feature-card card">
-            <span className="feature-icon">{f.icon}</span>
+
             <h3>{f.title}</h3>
             <p>{f.desc}</p>
           </div>

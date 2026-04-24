@@ -147,26 +147,26 @@ jobs:
             docker pull ${{ env.IMAGE_FRONTEND }}:${{ github.sha }}
 
             echo "🔑 Mise à jour des secrets Kubernetes..."
-            kubectl create secret generic todoapp-secrets \
+            sudo kubectl create secret generic todoapp-secrets \
               --namespace=todoapp \
               --from-literal=DB_PASSWORD='${{ secrets.DB_PASSWORD }}' \
               --from-literal=JWT_SECRET='${{ secrets.JWT_SECRET }}' \
-              --dry-run=client -o yaml | kubectl apply -f -
+              --dry-run=client -o yaml | sudo kubectl apply -f -
 
             echo "🔄 Mise à jour des images dans les déploiements K8s..."
-            kubectl set image deployment/backend \
+            sudo kubectl set image deployment/backend \
               backend=${{ env.IMAGE_BACKEND }}:${{ github.sha }} \
               --namespace=todoapp
 
-            kubectl set image deployment/frontend \
+            sudo kubectl set image deployment/frontend \
               frontend=${{ env.IMAGE_FRONTEND }}:${{ github.sha }} \
               --namespace=todoapp
 
             echo "⏳ Attente du rollout backend..."
-            kubectl rollout status deployment/backend --namespace=todoapp --timeout=120s
+            sudo kubectl rollout status deployment/backend --namespace=todoapp --timeout=120s
 
             echo "⏳ Attente du rollout frontend..."
-            kubectl rollout status deployment/frontend --namespace=todoapp --timeout=120s
+            sudo kubectl rollout status deployment/frontend --namespace=todoapp --timeout=120s
 
             echo "✅ Déploiement terminé avec succès !"
             echo "🌐 Application accessible sur http://${{ secrets.VM_HOST }}:30080"
